@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      builder: (ctx) => Products(),
-      child: MaterialApp(
+      builder: (ctx) => Products(),//like context provider
+      child: MaterialApp( //like {props.children} //all child will listen to above created instance of product(products())
+      //to listen they have to listen to context of products
           title: 'MyShop',
           theme: ThemeData(
             primarySwatch: Colors.purple,
