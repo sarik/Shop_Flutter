@@ -50,4 +50,12 @@ class Products with ChangeNotifier {
     // _items.add(value);
     notifyListeners();
   }
+
+  void addProductNew() {
+    // _items.add(value);
+    for (var i = 0; i < items.length; i++) {
+      items[i].title = 'chaning';
+    }
+    notifyListeners();
+  }
 }
