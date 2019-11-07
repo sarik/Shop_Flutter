@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/providers/cart.dart';
 
 import '../widgets/products_grid.dart';
+import '../screens/cart_screen.dart';
 
 class ProductsOverviewScreen extends StatelessWidget {
   @override
@@ -15,9 +16,16 @@ class ProductsOverviewScreen extends StatelessWidget {
         children: <Widget>[
           ProductsGrid(),
           Consumer<Cart>(
-            builder: (ctx, data, child) => FloatingActionButton(
-              child: Text(data.len().toString()),
-              onPressed: () {},
+            builder: (ctx, data, child) => Container(
+              
+              child: FlatButton(
+                color: Theme.of(context).accentColor,
+                
+                child: Text(data.len().toString()),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                },
+              ),
             ),
           ),
         ],

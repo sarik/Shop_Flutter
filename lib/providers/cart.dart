@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 
 class CartItem {
   final String name;
-
+  final double price;
   int quantity;
 
-  CartItem(this.name, this.quantity);
+  CartItem(this.name, this.quantity, this.price);
 }
 
 class Cart with ChangeNotifier {
@@ -19,8 +19,24 @@ class Cart with ChangeNotifier {
     return cartItems.length;
   }
 
-  void addToCart(String productID, String name) {
-    cartItems.putIfAbsent(productID, () => CartItem(name, 0));
+  double get getTotal {
+    double total = 0.0;
+
+    cartItems.forEach((key, val) => total = total + val.price * val.quantity);
+
+    return total;
+  }
+
+  void addToCart(String productID, double price, String name) {
+    if (!cartItems.containsKey(productID)) {
+      cartItems.putIfAbsent(productID, () => CartItem(name, 1, price));
+    } else {
+      cartItems.update(
+          productID,
+          (existingCartItem) =>
+              CartItem(productID, existingCartItem.quantity + 1, price));
+    }
+
     notifyListeners();
   }
 }
