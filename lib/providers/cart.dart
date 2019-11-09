@@ -39,4 +39,21 @@ class Cart with ChangeNotifier {
 
     notifyListeners();
   }
+
+  void removeItem(productId) {
+    cartItems.remove(productId);
+    notifyListeners();
+  }
+
+  void changeQuantity(productId, action) {
+    CartItem curr = cartItems[productId];
+    if (action == "add")
+      curr.quantity += 1;
+    else {
+      curr.quantity -= 1;
+      if (curr.quantity == 0) cartItems.remove(productId);
+    }
+
+    notifyListeners();
+  }
 }
