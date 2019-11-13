@@ -40,12 +40,11 @@ class _OrderItemState extends State<OrderItem> {
           if (_expanded)
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-              height: min(widget.order.products.length * 40.0 + 10, 200),
+              height: min(widget.order.products.length * 20.0 + 10, 100),
               child: ListView(
                 children: widget.order.products
-                    .map((prod) => Column(children: <Widget>[
-                          Row(
+                    .map(
+                      (prod) => Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
@@ -64,8 +63,7 @@ class _OrderItemState extends State<OrderItem> {
                               )
                             ],
                           ),
-                          Divider(thickness: 1,)
-                        ]))
+                    )
                     .toList(),
               ),
             )
