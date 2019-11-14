@@ -24,10 +24,7 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-
-            SizedBox(height: 50,),
             Container(
               height: 300,
               width: double.infinity,
@@ -37,7 +34,6 @@ class ProductDetailScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-           // Spacer(), spacer wont work since since is singlechildscrollview,by default spacer will have infinite space to grasp
             Text(
               '\$${loadedProduct.price}',
               style: TextStyle(

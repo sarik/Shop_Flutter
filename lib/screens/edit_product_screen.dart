@@ -25,6 +25,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
   @override
   void initState() {
+     print("inside init state");
+    //simply add a listener to _imageUrlFocusNode(attached to image url textformbox) and execute _updateImageUrl if it changes
     _imageUrlFocusNode.addListener(_updateImageUrl);
     super.initState();
   }
@@ -40,6 +42,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   }
 
   void _updateImageUrl() {
+    print("inside listener handler");
     if (!_imageUrlFocusNode.hasFocus) {
       if ((!_imageUrlController.text.startsWith('http') &&
               !_imageUrlController.text.startsWith('https')) ||
@@ -66,6 +69,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
+    print("inside build");
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Product'),
@@ -136,7 +141,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Description'),
-                maxLines: 3,
+              //no of lines displaying,but can enter more
+                maxLines: 2,
                 keyboardType: TextInputType.multiline,
                 focusNode: _descriptionFocusNode,
                 validator: (value) {
@@ -162,7 +168,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                    width: 100,
+                    width: 150,
                     height: 100,
                     margin: EdgeInsets.only(
                       top: 8,
